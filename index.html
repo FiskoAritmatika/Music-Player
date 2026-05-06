@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Queue Music Player</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="container">
+        <!-- Header -->
+        <div class="header">
+          <div class="header-content">
+            <div class="header-icon">🎵</div>
+            <div class="header-text">
+              <h1>Queue Player</h1>
+              <p>Materi Struktur Data: FIFO (First-In First-Out)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Input Section -->
+        <div class="input-section">
+          <div class="file-input-wrapper">
+            <label for="fileInput" class="file-input-label">
+              Tambah ke Antrean
+            </label>
+            <input 
+              type="file" 
+              id="fileInput" 
+              accept="audio/*"
+              multiple
+            />
+          </div>
+        </div>
+
+        <!-- Main Grid: Now Playing + Queue -->
+        <div class="main-grid">
+          <!-- Now Playing Card -->
+          <div class="now-playing-card">
+            <h2>Sedang Diputar</h2>
+            <div class="player-display">
+              <div class="album-art" id="albumArt">
+                <span id="albumEmoji">🎵</span>
+              </div>
+              <div class="song-info" id="songInfo">
+                <h3 id="songTitle" class="empty-player">Tidak ada lagu</h3>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-container">
+                  <div class="progress" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                  </div>
+                  <div class="time-display">
+                    <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Queue Card -->
+          <div class="queue-card">
+            <h2>
+              Daftar Antrean
+              <span class="queue-count" id="queueCount">0</span>
+            </h2>
+            <div class="queue-list" id="queueList">
+              <div class="queue-empty">Antrean kosong</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="audioPlayer"></audio>
+
+    <!-- Bottom Player Controls -->
+    <div class="player-bottom">
+      <!-- Progress Bar -->
+      <div class="progress-section">
+        <div class="progress-small" id="progressBarSmall">
+          <div class="progress-fill-small" id="progressFillSmall"></div>
+        </div>
+        <div class="time-small">
+          <span id="currentTimeSmall">0:00</span>
+        </div>
+      </div>
+
+      <!-- Player Info and Controls -->
+      <div class="player-info-bar">
+        <div class="player-info">
+          <div class="player-cover">
+            <span id="playerEmoji">🎵</span>
+          </div>
+          <div class="player-details">
+            <div class="player-title" id="playerTitle">Antrean kosong</div>
+          </div>
+        </div>
+
+        <div class="player-controls">
+          <!-- Tombol Previous dihapus untuk konsistensi struktur data Queue -->
+          
+          <button 
+            class="control-btn play-btn" 
+            id="playBtn" 
+            onclick="togglePlay()"
+            disabled
+            title="Play/Pause"
+          >
+            ▶
+          </button>
+          
+          <button 
+            class="control-btn" 
+            id="nextBtn" 
+            onclick="nextSong()"
+            disabled
+            title="Next (Dequeue)"
+          >
+            ⏭
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
